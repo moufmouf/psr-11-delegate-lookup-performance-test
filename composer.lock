@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b4c37afe09ea134fa90548091f2da576",
+    "hash": "b481528b0ea0e0794c9d24453542aebe",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1411,19 +1411,20 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.1",
+            "version": "dev-PSR11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/symfony.git",
-                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74"
+                "url": "https://github.com/moufmouf/symfony.git",
+                "reference": "d66711f5b8787fc22ab095846f636578ba35e5e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/932b6e7499c670f4db6d0b871477a4a3ca161e74",
-                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74",
+                "url": "https://api.github.com/repos/moufmouf/symfony/zipball/d66711f5b8787fc22ab095846f636578ba35e5e4",
+                "reference": "d66711f5b8787fc22ab095846f636578ba35e5e4",
                 "shasum": ""
             },
             "require": {
+                "container-interop/container-interop": "~1.1",
                 "doctrine/common": "~2.3",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
@@ -1510,7 +1511,6 @@
                     "src/Symfony/Component/Intl/Resources/stubs/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1529,7 +1529,10 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-11 21:15:28"
+            "support": {
+                "source": "https://github.com/moufmouf/symfony/tree/PSR11"
+            },
+            "time": "2015-06-15 13:05:13"
         },
         {
             "name": "twig/twig",
@@ -1639,9 +1642,18 @@
             "time": "2015-03-17 06:36:52"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "2.7.1",
+            "alias_normalized": "2.7.1.0",
+            "version": "dev-PSR11",
+            "package": "symfony/symfony"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "symfony/symfony": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

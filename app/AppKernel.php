@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Mouf\Picotainer\Picotainer;
 
 class AppKernel extends Kernel
 {
@@ -32,5 +33,30 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    /**
+     * Initializes the service container.
+     *
+     * Use this method to initialize your own DI container and register it
+     * in Symfony DI container.
+     */
+    protected function initializeContainer()
+    {
+        parent::initializeContainer();
+
+        $compositeContainer = new \Acclimate\Container\CompositeContainer();
+
+        // Create a Pimple container and store an SplQueue object
+        $picotainer = new Picotainer([
+            'my_service', function() { return new \stdClass(); }
+        ], $compositeContainer);
+
+
+        $sfContainer = $this->container;
+        $sfContainer->setDelegateContainer($compositeContainer);
+
+        $compositeContainer->addContainer($sfContainer);
+        $compositeContainer->addContainer($picotainer);
     }
 }

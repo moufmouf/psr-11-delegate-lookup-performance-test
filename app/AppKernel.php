@@ -47,16 +47,17 @@ class AppKernel extends Kernel
 
         $compositeContainer = new \Acclimate\Container\CompositeContainer();
 
-        // Create a Pimple container and store an SplQueue object
-        $picotainer = new Picotainer([
-            'my_service', function() { return new \stdClass(); }
-        ], $compositeContainer);
-
-
         $sfContainer = $this->container;
         $sfContainer->setDelegateContainer($compositeContainer);
 
-        $compositeContainer->addContainer($picotainer);
+        for ($i=0; $i<20; $i++) {
+            // Create a Pimple container and store an SplQueue object
+            $picotainer = new Picotainer([
+                'my_service', function() { return new \stdClass(); }
+            ], $compositeContainer);
+            $compositeContainer->addContainer($picotainer);
+        }
+
         $compositeContainer->addContainer($sfContainer);
     }
 }

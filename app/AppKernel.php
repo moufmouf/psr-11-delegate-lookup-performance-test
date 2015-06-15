@@ -56,7 +56,7 @@ class AppKernel extends Kernel
         $sfContainer = $this->container;
         $sfContainer->setDelegateContainer($compositeContainer);
 
-        $compositeContainer->addContainer($sfContainer);
         $compositeContainer->addContainer($picotainer);
+        $compositeContainer->addContainer($sfContainer);
     }
 }
